@@ -8,6 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "start": "node dist/app.js",
     "compile": "rm -rf dist && ./node_modules/.bin/tsc",
     "compile-dev": "rm -rf dist && ./node_modules/.bin/tsc --watch"
   },
