@@ -52,7 +52,6 @@ class Application {
             this.launch();
         }
     }
-
 }
 
 export { Application, ServerConfig };

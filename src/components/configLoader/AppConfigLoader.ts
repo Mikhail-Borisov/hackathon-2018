@@ -1,4 +1,4 @@
-import { resolve } from "path";
+import { resolve } from 'path';
 import { requireConfigsByPattern } from './requireConfigObject';
 
 type FullConfiguration = {
@@ -7,14 +7,14 @@ type FullConfiguration = {
 
 type Configuration = {
     [key: string]: any;
-}
+};
 
 /*
  * @class AppConfigBuilder
  * @classdesc Реквайрит содержимое указанной папки,
  * сохраняя в памяти в виде структуры Map
  */
-class AppConfigBuilder {
+class AppConfigLoader {
     private configPath: string;
     private fullConfig: Map<string, Configuration>;
 
@@ -38,7 +38,7 @@ class AppConfigBuilder {
 
     public getFull(): FullConfiguration {
         const configObject: FullConfiguration = {};
-        [...this.fullConfig].forEach(config => {
+        [...this.fullConfig].forEach((config) => {
             configObject[config[0]] = config[1];
         });
         return configObject;
@@ -50,11 +50,10 @@ class AppConfigBuilder {
 
     private init(): void {
         requireConfigsByPattern([this.configPath])
-            .forEach(config => {
+                .forEach((config) => {
                 this.fullConfig.set(config.name, config.content);
             });
-
     }
 }
 
-export { AppConfigBuilder };
+export { AppConfigLoader };
