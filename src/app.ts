@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import { AppConfigLoader } from './components/configBuilder/AppConfigLoader';
+import { AppConfigLoader } from './components/configLoader/AppConfigLoader';
 import { Application, ServerConfig } from './components/server/Application';
 
 const configLoader = new AppConfigLoader(resolve(__dirname, '../config'));
