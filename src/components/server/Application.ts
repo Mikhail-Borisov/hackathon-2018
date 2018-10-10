@@ -11,7 +11,7 @@ type ServerConfig = {
 class Application {
     private app: Express.Application;
     private config: ServerConfig;
-    public static DEFAULT_CONFIG: ServerConfig = { host: 'localhots', port: 3000, workers: 1 };
+    public static DEFAULT_CONFIG: ServerConfig = { host: 'localhost', port: 3000, workers: 1 };
 
     constructor(
         controllers: Function[] | string[],
@@ -25,23 +25,7 @@ class Application {
             middlewares
         });
     }
-
-    public setPort(port: number): Application {
-        this.config.port = port;
-        return this;
-    }
-
-    public setHost(host: string): Application {
-        this.config.host = host;
-        return this;
-    }
-
-    public setWorkers(workerNum: number): Application {
-        this.config.workers = workerNum;
-        return this;
-    }
-
-
+    
     public run(): void {
         if (this.config.workers === 1) {
             this.launch();
