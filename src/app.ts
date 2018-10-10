@@ -1,12 +1,9 @@
 import { resolve } from 'path';
 import { AppConfigBuilder } from './components/configBuilder/AppConfigBuilder';
-import { Application } from './components/server/Application';
+import { Application, ServerConfig } from './components/server/Application';
 
 const configBuilder = new AppConfigBuilder(resolve(__dirname, '../config'));
-configBuilder.print();
+const serverConfig = configBuilder.getConfig('server') as ServerConfig;
 
-new Application([], [])
-    .setHost('localhost')
-    .setPort(3000)
-    .setWorkers(2)
+new Application([], [], serverConfig)
     .run();
