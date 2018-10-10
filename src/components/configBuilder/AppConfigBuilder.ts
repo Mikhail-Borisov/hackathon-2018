@@ -1,9 +1,13 @@
 import { resolve } from "path";
-import { requireConfigsByPattern, ConfigFile } from './requireConfigObject';
+import { requireConfigsByPattern } from './requireConfigObject';
 
 type FullConfiguration = {
-    [key: string]: ConfigFile;
+    [key: string]: Configuration;
 };
+
+type Configuration = {
+    [key: string]: any;
+}
 
 /*
  * @class AppConfigBuilder
@@ -12,24 +16,24 @@ type FullConfiguration = {
  */
 class AppConfigBuilder {
     private configPath: string;
-    private fullConfig: Map<string, any>;
+    private fullConfig: Map<string, Configuration>;
 
     constructor(pathToConfigDir: string) {
         const wildcard = '*';
         this.configPath = resolve(pathToConfigDir, wildcard);
-        this.fullConfig = new Map<string, any>();
+        this.fullConfig = new Map<string, Configuration>();
         this.init();
     }
 
    /*
     * @param {string} name Название файла из папки конфигов. Без расширения
     */
-    public getConfig<T>(name: string): T | never {
+    public getConfig(name: string): Configuration {
         const config = this.fullConfig.get(name);
         if (!config) {
             throw new Error(`Config not found! Name: ${name}`);
         }
-        return config as T;
+        return config;
     }
 
     public getFull(): FullConfiguration {

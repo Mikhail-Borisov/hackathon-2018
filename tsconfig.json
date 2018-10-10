@@ -8,6 +8,7 @@
       "emitDecoratorMetadata": true,
       "noUnusedLocals": true,
       "noUnusedParameters": true,
+      "noImplicitAny": true,
       "strict": true,
       "sourceMap": true,
       "baseUrl": "./src",
