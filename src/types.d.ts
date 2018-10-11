@@ -17,3 +17,9 @@ declare module 'intel-types' {
         config(intelConfig: any): void;
     }
 }
+
+declare module 'hard-rejection' {
+    function install(log?: (message: any) => void): any;
+    namespace install {}
+    export = install;
+}
