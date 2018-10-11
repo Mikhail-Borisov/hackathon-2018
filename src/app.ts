@@ -1,8 +1,7 @@
-import { resolve } from 'path';
-import { AppConfigLoader } from './components/configLoader/AppConfigLoader';
+import { configLoader } from './components/configLoader';
 import { Application, ServerConfig } from './components/server/Application';
 
-const configLoader = new AppConfigLoader(resolve(__dirname, '../config'));
+configLoader.print();
 const serverConfig = configLoader.getConfig('server') as ServerConfig;
 
 new Application([], [], serverConfig)

@@ -5,6 +5,10 @@ export type ConfigFile = {
     content: any;
 };
 
+function removeFromNodeCache(id: string): void {
+    delete require.cache[require.resolve(id)];
+}
+
 export function requireConfigsByPattern(directories: string[]): ConfigFile[] {
     const formats = ['.js', '.json'];
     const allFiles = directories.reduce(
@@ -19,6 +23,7 @@ export function requireConfigsByPattern(directories: string[]): ConfigFile[] {
         })
         .map((pathTofile) => {
             const fileName = path.basename(pathTofile);
+            removeFromNodeCache(pathTofile);
             const config: ConfigFile = {
                 name: fileName.slice(0, fileName.lastIndexOf(formats[0])),
                 content: require(pathTofile),

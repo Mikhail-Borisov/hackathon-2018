@@ -45,7 +45,13 @@ class AppConfigLoader {
     }
 
     public print(): void {
-        console.log(JSON.stringify(this.getFull(), null, 2));
+        [...this.fullConfig].forEach((config) => {
+            try {
+                console.log(JSON.stringify(config[1], null, 2));
+            } catch (error) {
+                console.error(`Error: Config parse error - ${config[0]}`);
+            }
+        });
     }
 
     private init(): void {

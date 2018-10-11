@@ -11,7 +11,10 @@
         "noUnusedParameters": true,
         "strict": true,
         "sourceMap": true,
-        "baseUrl": "./src"
+        "baseUrl": "./src",
+        "paths": {
+            "@interfaces": ["components/ioc/interfaces"],
+          },
     },
     "include": [
         "src/**/*.ts"
