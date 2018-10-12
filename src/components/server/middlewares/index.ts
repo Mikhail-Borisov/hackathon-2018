@@ -5,6 +5,8 @@ import { CorsMiddleware } from './CorsMiddleware';
 import { SessionInitMiddleware } from './SessionMiddleware';
 import { CacheControllMiddleware } from './CacheControllMiddleware';
 import { ErrorHandlingMiddleware } from './ErrorHandlingMiddleware';
+import { PassportHandlerMiddleware } from './PassportHandlerMiddleware';
+import { PassportInitializeMiddleware } from './PassportInitMiddleware';
 
 export const middlewares = [
     AccessLogMiddlware,
@@ -13,5 +15,7 @@ export const middlewares = [
     CorsMiddleware,
     CacheControllMiddleware,
     SessionInitMiddleware,
+    PassportInitializeMiddleware,
+    PassportHandlerMiddleware,
     ErrorHandlingMiddleware
 ];

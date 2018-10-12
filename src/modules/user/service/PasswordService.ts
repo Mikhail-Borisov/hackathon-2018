@@ -1,5 +1,5 @@
 import * as crypto from 'crypto';
-import { NotAcceptableError } from 'routing-controllers';
+import { NotAcceptableError, ForbiddenError } from 'routing-controllers';
 
 type PasswordConfig = {
     minimumLength: number;
@@ -21,13 +21,14 @@ class PasswordService {
         }
     }
 
-    public static compare(actualPwd: string, expectedPwd: string): void | never {
-        if (actualPwd.length !== expectedPwd.length) {
-            throw new NotAcceptableError('Invalid auth data!');
+    public static compare(actualPwd: string, expectedHmacPwd: string): void | never {
+        const actualHmacPwd = PasswordService.getHmac(actualPwd);
+        if (actualHmacPwd.length !== expectedHmacPwd.length) {
+            throw new ForbiddenError('Invalid auth data!');
         }
-        const isValid = crypto.timingSafeEqual(Buffer.from(actualPwd), Buffer.from(expectedPwd));
+        const isValid = crypto.timingSafeEqual(Buffer.from(actualHmacPwd), Buffer.from(expectedHmacPwd));
         if (!isValid) {
-            throw new NotAcceptableError('Invalid auth data!');
+            throw new ForbiddenError('Invalid auth data!');
         }
     }
 
