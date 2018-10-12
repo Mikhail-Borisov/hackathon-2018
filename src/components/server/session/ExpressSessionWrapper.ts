@@ -4,6 +4,7 @@ import { SessionStoreFactory, StoreType } from './SessionStoreFactory';
 
 type SessionConfig = {
     secret: string;
+    name: string;
     store: {
         type: StoreType,
         host: string;
@@ -16,15 +17,16 @@ class ExpressSessionWrapper {
 
     constructor(config: SessionConfig) {
         const store = SessionStoreFactory.instance().create(config.store.type, config.store);
-        this.initSessionHandler(config.secret, store);
+        this.initSessionHandler(config.name, config.secret, store);
     }
 
     public get sessionHandlerMiddleware(): Express.RequestHandler {
         return this.sessionHandler;
     }
 
-    private initSessionHandler(secret: string, store: Session.Store | undefined): void {
+    private initSessionHandler(name: string, secret: string, store: Session.Store | undefined): void {
         this.sessionHandler = Session({
+            name,
             secret,
             store,
             resave: false,
@@ -36,4 +38,4 @@ class ExpressSessionWrapper {
     }
 }   
 
-export { ExpressSessionWrapper };
+export { ExpressSessionWrapper, SessionConfig };

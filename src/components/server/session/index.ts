@@ -1,1 +1,1 @@
-export { ExpressSessionWrapper } from './ExpressSessionWrapper';
+export { ExpressSessionWrapper, SessionConfig } from './ExpressSessionWrapper';

@@ -1,5 +1,6 @@
 {
     "secret": "23812hnciasudfgounastfaenrviayelukfgkds",
+    "name": "connection.sid",
     "store": {
         "type": "memory"
     }
