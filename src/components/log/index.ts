@@ -7,5 +7,6 @@ const loggerFactory = new LoggerFactory(config);
 
 const mainLogger = loggerFactory.createLogger('main');
 const expressLogger = loggerFactory.createLogger('express');
+const ormLogger = loggerFactory.createLogger('orm');
 
-export { mainLogger, expressLogger };
+export { mainLogger, expressLogger, ormLogger };

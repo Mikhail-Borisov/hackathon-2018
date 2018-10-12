@@ -15,6 +15,10 @@
         "scripts": {
             "format": "[%(date)s]: %(message)s",
             "colorize": true
+        },
+        "orm": {
+            "format": "[%(date)s] [SQL]: %(message)s",
+            "colorize": true
         }
     },
     "handlers": {
@@ -27,6 +31,11 @@
             "class": "intel/handlers/console",
             "formatter": "express",
             "level": "INFO"
+        },
+        "orm": {
+            "class": "intel.handlers.Console",
+            "formatter": "orm",
+            "level": "INFO"
         }
     },
     "loggers": {
@@ -36,6 +45,10 @@
         },
         "express": {
             "handlers": ["express"],
+            "level": "INFO"
+        },
+        "orm": {
+            "handlers": ["orm"],
             "level": "INFO"
         }
     }
