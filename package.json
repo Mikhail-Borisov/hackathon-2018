@@ -9,10 +9,12 @@
   "private": true,
   "scripts": {
     "start": "node dist/app.js",
+    "start-dev": "node_modules/.bin/nodemon dist/app.js",
     "compile": "rm -rf dist && ./node_modules/.bin/tsc",
     "compile-dev": "rm -rf dist && ./node_modules/.bin/tsc --watch",
     "lint": "./node_modules/.bin/tslint --project tsconfig.json --config tslint.json",
     "lint-fix": "./node_modules/.bin/tslint --project tsconfig.json --config tslint.json --fix",
+    "typeorm-config": "node dist/bin/db-config.js > ormconfig.json",
     "migrate": "yarn run typeorm-config && ./node_modules/.bin/typeorm migration:run",
     "migrate-undo": "yarn run typeorm-config && ./node_modules/.bin/typeorm migration:revert"
   },
@@ -25,6 +27,7 @@
     "@types/node": "10.11.4",
     "@types/redis": "2.8.7",
     "body-parser": "1.18.3",
+    "class-transformer": "0.1.9",
     "connect-redis": "3.4.0",
     "cors": "2.8.4",
     "express": "4.16.3",

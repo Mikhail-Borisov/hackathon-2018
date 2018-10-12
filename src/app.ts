@@ -1,4 +1,4 @@
-import './bootstap';
+import './bootstrap';
 import { resolve } from 'path';
 import { configLoader } from './components/configLoader';
 import { initDbContainer } from './components/ioc/initDbContainer';

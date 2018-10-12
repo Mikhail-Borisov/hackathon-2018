@@ -1,0 +1,12 @@
+{
+    "route": "POST /api/auth/reg",
+    "body": {
+        "role": "enum",
+        "fistname": "string",
+        "secondname": "string",
+        "email": "string",
+        "password": "string"
+    },
+    "roleEnum": "worker | employer | teacher",
+    "responseBody": "Profile"
+}

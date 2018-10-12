@@ -24,7 +24,7 @@ class Application {
     ) {
         this.config = config;
         this.app = createExpressServer({
-            defaultErrorHandler: true,
+            defaultErrorHandler: false,
             controllers,
             middlewares
         });

@@ -33,7 +33,7 @@
             "level": "INFO"
         },
         "orm": {
-            "class": "intel.handlers.Console",
+            "class": "intel/handlers/console",
             "formatter": "orm",
             "level": "INFO"
         }

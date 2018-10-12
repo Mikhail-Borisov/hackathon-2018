@@ -4,12 +4,12 @@ export class CreateUser1539350595878 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<any> {
         await queryRunner.query(`
-            create table user (
+            create table auth_user (
                 id serial primary key,
-                username varchar not null,
-                "firstName" varchar,
+                email varchar not null,
+                "firstname" varchar,
+                "lastname" varchar,
                 "phoneNumber" varchar,
-                email varchar,
                 role varchar not null,
                 password varchar(300) not null
             )
@@ -17,7 +17,7 @@ export class CreateUser1539350595878 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<any> {
-        await queryRunner.query(`drop table user`);
+        await queryRunner.query(`drop table auth_user`);
     }
 
 }

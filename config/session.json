@@ -2,9 +2,8 @@
     "secret": "23812hnciasudfgounastfaenrviayelukfgkds",
     "name": "connection.sid",
     "store": {
-        "type": "redis",
+        "type": "memory",
         "host": "localhost",
-        "port": 6379
-        
+        "port": 6379 
     }
 }
