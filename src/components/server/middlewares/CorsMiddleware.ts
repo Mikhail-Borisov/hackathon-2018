@@ -8,6 +8,7 @@ export class CorsMiddleware implements ExpressMiddlewareInterface {
         response.setHeader(
             'Access-Control-Allow-Headers',
             'Authorization, ' +
+            'set-cookie, ' +
             'Content-Type, ' +
             'Cache-Control');
         response.setHeader(
