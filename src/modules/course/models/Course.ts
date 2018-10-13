@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinTable, ManyToMany } from 'typeorm';
 import { Lesson } from './Lesson';
 import { SkillTag } from './Tag';
+import { User } from '../../../modules/user/models/User';
 
 @Entity()
 export class Course {
@@ -34,6 +35,13 @@ export class Course {
     })
     @JoinTable()
     public skillTags: SkillTag[];
+
+    @ManyToMany(() => User, {
+        eager: true,
+        cascade: ['update']
+    })
+    @JoinTable()
+    public experts: User[];
 
     @OneToMany(() => Lesson, lesson => lesson.course, {
         eager: true,

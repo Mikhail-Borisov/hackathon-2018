@@ -19,7 +19,8 @@
     "migrate": "yarn run typeorm-config && ./node_modules/.bin/typeorm migration:run",
     "migrate-undo": "yarn run typeorm-config && ./node_modules/.bin/typeorm migration:revert",
     "fixture:course": "node dist/bin/console/fixture-courses",
-    "fixture:skill": "node dist/bin/console/fixture-skills"
+    "fixture:skill": "node dist/bin/console/fixture-skills",
+    "fixture:teacher": "node dist/bin/console/fixture-teachers"
   },
   "dependencies": {
     "@types/connect-redis": "0.0.7",

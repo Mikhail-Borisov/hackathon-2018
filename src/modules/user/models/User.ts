@@ -40,6 +40,9 @@ class User {
     @Column({ nullable: true })
     public phoneNumber?: string;
 
+    @Column({ nullable: true })
+    public userpicUrl?: string;
+
     public setPassword(plainText: string): void {
         this.password = plainText;
     }

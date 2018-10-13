@@ -1,0 +1,38 @@
+[
+    {
+        "email": "elena@gmail.com",
+        "role": "teacher",
+        "password": "123",
+        "firstname": "Елена",
+        "lastname": "Андреевна",
+        "phoneNumber": "+79136662211",
+        "userpicUrl": "https://uznayvse.ru/images/celebs/2017/12/elena-polyanskaya_big.jpg"
+    },
+    {
+        "email": "igor@gmail.com",
+        "role": "teacher",
+        "password": "123",
+        "firstname": "Игорь",
+        "lastname": "Евпатович",
+        "phoneNumber": "+79136662222",
+        "userpicUrl": "https://globalsib.com/wp-content/uploads/2017/06/igor-nikolaev-2.jpg"
+    },
+    {
+        "email": "zara@gmail.com",
+        "role": "teacher",
+        "password": "123",
+        "firstname": "Зара",
+        "lastname": "Омаровна",
+        "phoneNumber": "+79136662233",
+        "userpicUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxTq0ICtlHm6wrEY2Kjy_LHokxqyZp9EV4x4F5Adzd6Re2V_-7"
+    },
+    {
+        "email": "anatoly@gmail.com",
+        "role": "teacher",
+        "password": "123",
+        "firstname": "Анатолий",
+        "lastname": "Маршакович",
+        "phoneNumber": "+79136662244",
+        "userpicUrl": "https://sev.life/wp-content/uploads/2016/07/vasser.jpg"
+    }
+]

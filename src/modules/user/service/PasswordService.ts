@@ -7,7 +7,7 @@ type PasswordConfig = {
 };
 
 const config: PasswordConfig = {
-    minimumLength: 8,
+    minimumLength: 3,
     secret: '231123qwdasdawfd'
 };
 
