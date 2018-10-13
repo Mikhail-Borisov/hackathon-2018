@@ -1,10 +1,9 @@
-import * as cors from 'cors';
 import { Middleware, ExpressMiddlewareInterface } from 'routing-controllers';
 import { NextFunction } from 'express';
 
 @Middleware({ type: 'before' })
 export class CorsMiddleware implements ExpressMiddlewareInterface {
-    public use(request: any, response: any, next: NextFunction ) {
+    public use(_request: any, response: any, next: NextFunction ) {
         response.setHeader('Access-Control-Allow-Origin', '*');
         response.setHeader(
             'Access-Control-Allow-Headers',
