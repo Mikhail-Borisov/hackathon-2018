@@ -1,4 +1,4 @@
-import { JsonController, Get, Post, Put, Delete, OnUndefined, UseBefore, UseInterceptor, Param, NotFoundError } from 'routing-controllers';
+import { JsonController, Get, Post, Put, Delete, OnUndefined, UseBefore, UseInterceptor, Param, NotFoundError, HttpCode } from 'routing-controllers';
 import { getRepository, Repository } from 'typeorm';
 import { Course } from '../models/Course';
 import { ContentFilter } from './checkers/ContentFilter';
@@ -44,5 +44,11 @@ export class CourseController {
     @OnUndefined(204)
     public async delete() {
         return {};
+    }
+
+    @Post('/:id(\\d+)/start')
+    @HttpCode(201)
+    public async startCourse(@Param('id') id: number) {
+        
     }
 }
