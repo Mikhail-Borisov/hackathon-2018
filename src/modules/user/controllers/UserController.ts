@@ -1,16 +1,21 @@
 import { getRepository, Repository } from 'typeorm';
 import { User } from '../models/User';
+import { isAuthorized } from './checkers';
 import {
     JsonController,
-    Get
+    Get,
+    Req,
+    UseBefore
 } from 'routing-controllers';
 
 @JsonController('/api/user')
+@UseBefore(isAuthorized)
 export class UserController {
     private repository: Repository<User> = getRepository(User);
 
     @Get('/profile')
-    public async getUserProfile() {
-        return await this.repository.find();
+    @UseBefore(isAuthorized)
+    public async getUserProfile(@Req() request: Express.Request) {
+        return await this.repository.findOne(request.user.id);
     }
 }
