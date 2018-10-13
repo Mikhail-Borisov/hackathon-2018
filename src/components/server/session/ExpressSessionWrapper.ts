@@ -32,7 +32,9 @@ class ExpressSessionWrapper {
             resave: false,
             saveUninitialized: true,
             cookie: {
-                maxAge: 36000000
+                httpOnly: false,
+                maxAge: 604800000,
+                secure: false
             }
         });
     }
