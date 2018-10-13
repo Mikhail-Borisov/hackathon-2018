@@ -10,7 +10,8 @@ import {
     Param, 
     NotFoundError,
     QueryParam,
-    Body
+    Body,
+    BadRequestError
 } from 'routing-controllers';
 import { getRepository, Repository, QueryRunner, getConnection } from 'typeorm';
 import { Course } from '../models/Course';
@@ -18,11 +19,13 @@ import { ContentFilter } from './checkers/ContentFilter';
 import { isTeacher } from './checkers/isTeacher';
 import { CourseView } from '../views/CourseView';
 import { SkillTag } from '../models/Tag';
+import { User, UserRole } from '../../../modules/user/models/User';
 import { plainToClass } from 'class-transformer';
 
 @JsonController('/api/course')
 export class CourseController {
     private repository: Repository<Course> = getRepository(Course);
+    private userRepository: Repository<User> = getRepository(User);
     private rawQueryRunner: QueryRunner = getConnection().createQueryRunner();
 
     @Get('/')
@@ -51,13 +54,33 @@ export class CourseController {
     @Put('/:id(\\d+)/tag/update')
     public async editTags(
         @Param('id') id: number,
-        @Body({ required: true }) tagList: { list: SkillTag[]; }) {
+        @Body({ required: true }) tagList: { list: SkillTag[]; }
+    ) {
         const course = await this.repository.findOne(id);
         if (!course) {
             throw new NotFoundError(`Course with id ${id} not found!`);
         }
         const tags = plainToClass(SkillTag, tagList.list);
         course.skillTags = tags;
+        await this.repository.save(course);
+
+        return CourseView.render(course);
+    }
+
+    @Put('/:id(\\d+)/expert/update')
+    public async editExpertList(
+        @Param('id') id: number,
+        @Body({ required: true }) expertIdList: { list: number[]; }
+    ) { 
+        const course = await this.repository.findOne(id);
+        if (!course) {
+            throw new NotFoundError(`Course with id ${id} not found!`);
+        }
+        const experts = await this.userRepository.findByIds(expertIdList.list);
+        if (experts.find(expert => expert.role !== UserRole.TEACHER)) {
+            throw new BadRequestError('Invalid user roles');
+        }
+        course.experts = experts;
         await this.repository.save(course);
 
         return CourseView.render(course);
