@@ -3,11 +3,11 @@ import { Request, Response, NextFunction } from 'express';
 import { ExpressSessionWrapper, sessionWrapper } from '../session';
 
 @Middleware({ type: 'before' })
-export class SessionInitMiddleware implements ExpressMiddlewareInterface {
+export class CookieParserMiddleware implements ExpressMiddlewareInterface {
     private sessionWrapper: ExpressSessionWrapper = sessionWrapper;
 
     public use = (request: Request, response: Response, next: NextFunction): void => {
-        this.sessionWrapper.sessionHandlerMiddleware(request, response, next);
+        this.sessionWrapper.cookieHandlerMiddleware(request, response, next);
     }
 
 }

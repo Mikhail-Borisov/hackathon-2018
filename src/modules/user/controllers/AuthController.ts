@@ -23,6 +23,15 @@ import { PasswordService } from '../service/PasswordService';
 export class AuthController {
     private repository: Repository<User> = getRepository(User);
 
+    @Get('/status')
+    public async getAuthStatus(@Req() request: Express.Request) {
+        return {
+            isAuthorized: Boolean(request.user),
+            sessionId: request.sessionID,
+            userId: request.user ? request.user!.id : null 
+        };  
+    }
+
     @Post('/reg')
     @HttpCode(201)
     public async regUser(
