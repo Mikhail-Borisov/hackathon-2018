@@ -8,6 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "build": "yarn install --pure-lockfile",
     "start": "node dist/app.js",
     "start-dev": "node_modules/.bin/nodemon dist/app.js",
     "compile": "rm -rf dist && ./node_modules/.bin/tsc",
@@ -16,7 +17,9 @@
     "lint-fix": "./node_modules/.bin/tslint --project tsconfig.json --config tslint.json --fix",
     "typeorm-config": "node dist/bin/db-config.js > ormconfig.json",
     "migrate": "yarn run typeorm-config && ./node_modules/.bin/typeorm migration:run",
-    "migrate-undo": "yarn run typeorm-config && ./node_modules/.bin/typeorm migration:revert"
+    "migrate-undo": "yarn run typeorm-config && ./node_modules/.bin/typeorm migration:revert",
+    "fixture:course": "node dist/bin/console/fixture-courses",
+    "fixture:skill": "node dist/bin/console/fixture-skills"
   },
   "dependencies": {
     "@types/connect-redis": "0.0.7",

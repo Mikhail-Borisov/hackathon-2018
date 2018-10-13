@@ -1,32 +1,26 @@
-// import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-// @Entity()
-// export class Material {
-//     @PrimaryGeneratedColumn()
-//     public id!: number;
+export const categories = [
+    'IT, телеком',
+    'Маркетинг',
+    'Консультирование',
+    'Наука, образование',
+    'Банки',
+    'Управление персоналом',
+    'Искусство, медиа',
+    'Производство',
+    'Топ-менеджмент',
+    'Безопасность'
+];
 
-//     @Column()
-//     public lessonId: number;
+@Entity('skill_tag')
+export class SkillTag {
+    @PrimaryGeneratedColumn()
+    public id!: number;
 
-//     @Column()
-//     public orderNumber: number;
+    @Column()
+    public title: string;
 
-//     @Column()
-//     public title: string;
-    
-//     @Column()
-//     public type: string;
-
-//     @Column()
-//     public subTitle?: string;
-
-//     @Column()
-//     public content: string;
-
-//     // @ManyToOne(() => Lesson, lesson => lesson.materials)
-//     // public lesson: Lesson;
-
-//     // public get timeToRead(): number {
-//     //     return readTimeGenerator.generate(this.content);
-//     // } 
-// }
+    @Column()
+    public imageUrl?: string;
+}

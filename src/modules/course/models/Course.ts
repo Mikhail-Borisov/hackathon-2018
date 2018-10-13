@@ -1,6 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinTable, ManyToMany } from 'typeorm';
 import { Lesson } from './Lesson';
-
+import { SkillTag } from './Tag';
 
 @Entity()
 export class Course {
@@ -23,10 +23,17 @@ export class Course {
     public imageUrl?: string;
 
     @Column()
+    public preivewImage?: string;
+
+    @Column()
     public demoVideoUrl?: string;
 
-    // @Column()
-    // public learnTags: string[];
+    @ManyToMany(() => SkillTag, {
+        eager: true,
+        cascade: ['insert', 'update', 'remove']
+    })
+    @JoinTable()
+    public skillTags: SkillTag[];
 
     @OneToMany(() => Lesson, lesson => lesson.course, {
         eager: true,
