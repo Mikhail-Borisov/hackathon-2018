@@ -19,7 +19,7 @@ class WorkerProfile {
 
     @ManyToMany(() => SkillTag, {
         eager: true,
-        cascade: ['update']
+        cascade: ['update', 'insert']
     })
     @JoinTable()
     public skillTags: SkillTag[];
