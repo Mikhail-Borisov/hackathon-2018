@@ -43,6 +43,8 @@ class User {
     @Column({ nullable: true })
     public userpicUrl?: string;
 
+    public profileData: any;
+
     public setPassword(plainText: string): void {
         this.password = plainText;
     }

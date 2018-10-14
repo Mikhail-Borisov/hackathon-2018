@@ -31,7 +31,7 @@ export class Course {
 
     @ManyToMany(() => SkillTag, {
         eager: true,
-        cascade: ['insert', 'update', 'remove']
+        cascade: ['insert', 'update']
     })
     @JoinTable()
     public skillTags: SkillTag[];
